@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        i {
+            color: black;
+        }
+        .support{
+        }
+
+    </style>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - The Daily Post</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <!-- Icons CDN link -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar fixed-top navbar-expand-sm navbar-toggleable-sm navbar-dark border-bottom box-shadow mb-3" style="background: #2772c2">
+            <div class="container">
+                <h4 style="font-family:cursive;color:white;">The Daily Post</h4>
+                <a class="btn" href="https://rzp.io/l/74Donatexq6f" target="_blank" style="float: right; color: white; border-color:white;">Support Us!</a>
+            </div>
+        </nav>
+    </header>
+    <div class="">
+        <main role="main" class="pb-3">
+            <br /><br />
+            @RenderBody()
+        </main>
+    </div>
+    <nav class="navbar fixed-bottom navbar-dark" style="background: white; ">
+        <div class="container-fluid">
+            <a class="nav-link" asp-area="" asp-controller="Posts" asp-action="Index"><i class="fas fa-home fa-1x"></i></a>
+            <a class="nav-link" asp-area="Identity" asp-page="/Account/Logout"><i class="fas fa-power-off fa-1x"></i></a>
+            <a class="nav-link" asp-area="" asp-controller="Posts" asp-action="Create"><i class="fas fa-plus-circle fa-1x"></i></a>
+            <a class="nav-link" asp-area="" asp-controller="Posts" asp-action="Search"><i class="fas fa-search fa-1x"></i></a>
+            <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><i class="fas fa-user-circle fa-1x"></i></a>
+        </div>
+
+    </nav>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+<footer>
+    <div class="container">
+        <div class="text-center center-block">
+            <p class="txt-railway">
+                &copy; @DateTime.Today.ToString("yyyy") ALL RIGHTS RESERVED <a asp-action="AboutMe"><B style="color: #2772c2 "> Ajay Karumathil</B></a> 
+                | <small>DEVELOPED BY <a asp-action="AboutMe"><B style="color: #2772c2 ">AJAY KARUMATHIL</B></a> </small>
+            </p>
+        </div>
+<br /><br /><br />
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,82 @@
+﻿@model Post
+@using Microsoft.AspNetCore.Identity
+@using TheDailyPost.Areas.Identity.Data
+
+@inject SignInManager<AuthUser> SignInManager
+@inject UserManager<AuthUser> UserManager
+@{
+    var authorName = UserManager.GetUserAsync(User).Result?.Firstname + " " + @UserManager.GetUserAsync(User).Result?.Lastname;
+    var authorImage = UserManager.GetUserAsync(User).Result?.ImageUrl;
+    ViewData["Title"] = "Create";
+    var ddmmyy = DateTime.Today.ToString("yy") + "" + DateTime.Now.ToString("MM") + "" + DateTime.Now.ToString("dd") + "" + DateTime.Now.ToString("HH") + "" + DateTime.Now.ToString("mm");
+}
+
+
+<div class="container">
+    <br />
+    <h4 style="text-align:center;">Create a Post</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" class="form-control" required/>
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Content" class="control-label"></label>
+                    <textarea asp-for="Content" class="form-control" required></textarea>
+                    <span asp-validation-for="Content" class="text-danger"></span>
+                </div>
+                @*-----------------------------------------------------------------*@
+                <div class="form-group">
+                    <input asp-for="Date" hidden class="form-control" value="@DateTime.Today.Day" readonly />
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Month" hidden class="form-control" value="@DateTime.Today.Month" readonly />
+                    <span asp-validation-for="Month" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Year" hidden class="form-control" value="@DateTime.Today.ToString("yy")" readonly />
+                    <span asp-validation-for="Year" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="DDMMYY" hidden class="form-control" value="@ddmmyy" readonly />
+                    <span asp-validation-for="Year" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AuthorImg" class="control-label" hidden></label>
+                    <input asp-for="AuthorImg" class="form-control" hidden value="@authorImage" readonly />
+                    <span asp-validation-for="AuthorImg" class="text-danger" hidden></span>
+                </div>
+                @*------------------------------------------------------------------*@
+                <div class="form-group">
+                    <label asp-for="Author" class="control-label" hidden></label>
+                    <input asp-for="Author" class="form-control" hidden value="@authorName" readonly />
+                    <span asp-validation-for="Author" class="text-danger" hidden></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ImageFile" class="control-label"></label>
+                    <input asp-for="ImageFile" class="form-control-file" accept="image/*" required/>
+                    <span asp-validation-for="ImageFile" class="text-danger"></span>
+                </div>
+
+                <br />
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to Home</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

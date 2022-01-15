@@ -1,0 +1,43 @@
+﻿@model Post
+@using TheDailyPost.Models
+@using Microsoft.AspNetCore.Identity
+@using TheDailyPost.Areas.Identity.Data
+
+@inject SignInManager<AuthUser> SignInManager
+@inject UserManager<AuthUser> UserManager
+
+
+<script>
+    function AddLike() {
+        var currentcount = document.getElementById("Like").value;
+        document.getElementById("Like").value = Number(currentcount) + Number(1);
+    }
+
+</script>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddLike">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input name="id" type="hidden" asp-for="Id" />
+
+            <div class="form-group">
+                <input hidden name="likername"  value="@UserManager.GetUserName(User)" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label hidden asp-for="LikeCount" class="control-label"></label>
+                <button style="border-radius:100%" type="submit" disabled="@ViewBag.UserStatus" onclick="AddLike()" value="" class="btn"><i style="color:red;" class="@ViewBag.Icon fa-heart"></i></button><b><input readonly style="border:none;width:50px;font-size:large;" id="Like" asp-for="LikeCount" /> </b>
+                <br /><br />
+                
+                
+                <span asp-validation-for="LikeCount" class="text-danger"></span>
+            </div>
+            
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

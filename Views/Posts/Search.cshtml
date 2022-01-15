@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Post>
+
+    @{
+        ViewData["Title"] = "Search";
+    }
+
+    <h1>Search Results</h1>
+
+
+    <div class="card container">
+        <nav class="navbar navbar-light bg-light">
+            <div class="container-fluid">
+                <form class="d-flex" method="post">
+                    <input name="parameter" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button style="float:right;" class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+    </div>
+    <hr />
+    @foreach (var item in Model)
+    {
+        <div class="card mb-3" style="width:400px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <br />
+                    <center><img src="@("~/Images/" + item.ImageName)" class="img-fluid rounded-start img-thumbnail" alt="..." asp-append-version="true"></center>
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h4 class="card-title" style="text-align:center;">@Html.DisplayFor(modelItem => item.Title)</h4>
+                        <a asp-controller="Posts" asp-action="Details" asp-route-id="@item.Id">Read the article</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+    }

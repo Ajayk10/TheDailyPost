@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "mssql4": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/thedailypostdbserver/databases/TheDailyPost",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:DefaultConnection",
+      "secretStore": "AzureAppSettings"
+    },
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/thedailypostdbserver/databases/TheDailyPost",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:PostContext",
+      "secretStore": "AzureAppSettings"
+    },
+    "mssql3": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/thedailypostdbserver/databases/TheDailyPost",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:LikerDetailContext",
+      "secretStore": "AzureAppSettings"
+    },
+    "mssql2": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/thedailypostdbserver/databases/TheDailyPost",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:AuthContextConnection",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}

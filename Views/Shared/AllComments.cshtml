@@ -1,0 +1,22 @@
+﻿@model IEnumerable<CommentModel>
+
+
+<br />
+<br /> 
+    <div class="container">
+        <div class="card container">
+            @foreach (var item in Model)
+            {
+                if (item == null)
+                {
+                    <p>No Comments so far...</p>
+                }
+                else
+                {
+                    <h6>@item.Commentorname</h6>
+                    <p>@item.Comment</p>
+                }
+            }
+        </div>
+    </div>
+
